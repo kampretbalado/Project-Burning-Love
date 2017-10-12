@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-=======
->>>>>>> 3bb37650000c99f5316428e1dc2fe909ef0c5790
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.burninglove.dma.burninglove.MainActivity">
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:text="TextView" />
-=======
     <ImageView
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/PTVTI9Y"
+        android:layout_gravity="top"/>
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/PTVTI9Y"
@@ -65,8 +61,5 @@
             android:layout_marginTop="12dp"
             />
 
-
     </LinearLayout>
-
->>>>>>> 3bb37650000c99f5316428e1dc2fe909ef0c5790
 </FrameLayout>
