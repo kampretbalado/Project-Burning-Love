@@ -21,6 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Bertemu"
+            android:label="@string/title_activity_bertemu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Statistics" />
+        <activity android:name=".Timeline" />
+        <activity
+            android:name=".ChooseExercise"
+            android:label="@string/title_activity_choose_exercise"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
