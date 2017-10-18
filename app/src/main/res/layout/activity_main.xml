@@ -10,14 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/PTVTI9Y"
+        android:src="@drawable/cat_sporty"
         android:layout_gravity="top"/>
 
     <LinearLayout
         android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/PTVTI9Y"
+        android:src="@drawable/cat_sporty"
         android:layout_gravity="top"/>
 
     <LinearLayout

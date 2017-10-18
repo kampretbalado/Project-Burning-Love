@@ -20,7 +20,8 @@
             android:name=".Bertemu"
             android:label="@string/title_activity_bertemu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Statistics"></activity>
+        <activity android:name=".Statistics" />
+        <activity android:name=".Timeline"></activity>
     </application>
 
 </manifest>
