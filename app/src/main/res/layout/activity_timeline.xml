@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,10 @@
     tools:context="com.burninglove.dma.burninglove.Timeline"
     android:orientation="vertical">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/rl_timeline_top"
         android:layout_width="match_parent"
@@ -93,8 +97,155 @@
                 android:textColor="#999"
                 android:textStyle="italic" />
 
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
+
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Summary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_berat_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="65"
+                android:textSize="32sp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_berat_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_berat_label" />
+
+            <TextView
+                android:id="@+id/tv_tinggi_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="165"
+                android:textSize="32sp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_tinggi_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tinggi_label" />
+
+            <TextView
+                android:id="@+id/tv_tinggi_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Tinggi Badan"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_berat_value" />
+
+            <TextView
+                android:id="@+id/tv_bmi_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="BMI"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_calorie_value" />
+
+            <TextView
+                android:id="@+id/tv_bmi_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="21.4"
+                android:textSize="32sp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_bmi_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bmi_label" />
+
+            <TextView
+                android:id="@+id/tv_tinggi_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="cm"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_tinggi_value"
+                app:layout_constraintLeft_toRightOf="@+id/tv_tinggi_value" />
+
+            <TextView
+                android:id="@+id/tv_calorie_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="cal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_calorie_value"
+                app:layout_constraintLeft_toRightOf="@+id/tv_calorie_value" />
+
+            <TextView
+                android:id="@+id/tv_berat_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Kg"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_berat_value"
+                app:layout_constraintLeft_toRightOf="@+id/tv_berat_value" />
+
+            <TextView
+                android:id="@+id/tv_calorie_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Kalori Terbakar "
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tinggi_value" />
+
+            <TextView
+                android:id="@+id/tv_calorie_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="329"
+                android:textSize="32sp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_calorie_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_calorie_label" />
+
+            <TextView
+                android:id="@+id/tv_berat_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Berat Badan"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>
+
+</ScrollView>
