@@ -7,10 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.burninglove.dma.burninglove.R;
 
 public class OneFragment extends Fragment{
+
+
+
     public OneFragment() {
         // Required empty public constructor
     }
