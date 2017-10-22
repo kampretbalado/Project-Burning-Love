@@ -1,0 +1,150 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.burninglove.dma.burninglove.ChatPageFriend">
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat2"
+        android:layout_alignParentStart="true"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/cat_sporty"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp"
+        android:id="@+id/imageView3" />
+
+    <TextView
+        android:layout_width="212dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:textSize="15dp"
+        android:text="How are you?" />
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="180dp"
+        android:textSize="10dp"
+        android:text="17:33" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/chat2"
+        android:layout_centerHorizontal="true">
+
+
+        <TextView
+            android:layout_width="212dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="260dp"
+            android:textSize="15dp"
+            android:text="Hello" />
+
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="210dp"
+            android:textSize="10dp"
+            android:text="17:33" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat3"
+        android:layout_alignParentStart="true"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_below="@+id/chat">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cat_sporty"
+            android:scaleType="centerCrop"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:layout_width="212dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="80dp"
+            android:textSize="15dp"
+            android:text="Hi" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="120dp"
+            android:textSize="10dp"
+            android:text="17:23" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="200dp"
+        android:id="@+id/choice"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/chat">
+
+        <Button
+            android:id="@+id/choice1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Fine"/>
+
+        <Button
+            android:id="@+id/choice2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/choice"
+            android:layout_marginTop="54dp"
+            android:text="Who are you?" />
+
+        <Button
+            android:id="@+id/choice3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/choice"
+            android:layout_marginTop="110dp"
+            android:text="How do you do?" />
+    </FrameLayout>
+
+
+</RelativeLayout>

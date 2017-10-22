@@ -16,7 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PushUpActivity"></activity>
+        <activity
+            android:name=".PushUpActivity"
+            android:label="@string/title_activity_push_up">
+        </activity>
+        <activity
+            android:name=".SitUpActivity"
+            android:label="@string/title_activity_sit_up">
+        </activity>
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
@@ -31,7 +38,9 @@
         <activity
             android:name=".ChooseExercise"
             android:label="@string/title_activity_choose_exercise"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ChatPageFriend">
+        </activity>
     </application>
 
 </manifest>

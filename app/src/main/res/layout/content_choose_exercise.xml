@@ -33,21 +33,22 @@
 
 
         <Button
-            android:id="@+id/story_mode_button"
+            android:id="@+id/push_up_button"
             android:layout_width="144dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:text="Story Mode"
+            android:text="Push Up"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_light"
             android:layout_marginBottom="12dp"
             />
 
         <Button
+            android:id="@+id/sit_up_button"
             android:layout_width="144dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:text="Free Mode"
+            android:text="Sit Up"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_light"
             android:layout_marginTop="12dp"
@@ -58,7 +59,7 @@
             android:layout_width="144dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:text="Statistics"
+            android:text="Run"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_light"
             android:layout_marginTop="12dp"
