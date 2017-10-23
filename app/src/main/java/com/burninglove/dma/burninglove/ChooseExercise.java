@@ -12,6 +12,7 @@ import android.widget.Button;
 public class ChooseExercise extends AppCompatActivity {
 
     private Button pushUpButton;
+    private Button sitUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +22,20 @@ public class ChooseExercise extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         pushUpButton = (Button) findViewById(R.id.push_up_button);
+        sitUpButton = (Button) findViewById(R.id.sit_up_button);
 
         pushUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseExercise.this, PushUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sitUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseExercise.this, SitUpActivity.class);
                 startActivity(intent);
             }
         });

@@ -8,12 +8,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PushUpActivity extends AppCompatActivity implements SensorEventListener {
+public class SitUpActivity extends AppCompatActivity implements SensorEventListener {
 
     private static final float SENSOR_SENSITIVITY = 9;
 
@@ -29,7 +28,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_push_up);
+        setContentView(R.layout.activity_sit_up);
 
         tv_counter = (TextView) findViewById(R.id.pushupcounter);
         pushuplimit = (TextView) findViewById(R.id.pushuplimit);

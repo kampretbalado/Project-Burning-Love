@@ -3,13 +3,13 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_choose_exercise">Hello blank fragment</string>
     <string name="title_activity_bertemu">Hello blank fragment</string>
+    <string name="title_activity_choose_exercise">Hello blank fragment</string>
+    <string name="title_activity_push_up">Push Up</string>
+    <string name="title_activity_sit_up">Sit Up</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activiy_bertemu">Hello blank fragment</string>
-    <string name="title_activity_choose_exercise">Hello blank fragment</string>
 
     <string name="home">Home</string>
     <string name="chat">Chat</string>
