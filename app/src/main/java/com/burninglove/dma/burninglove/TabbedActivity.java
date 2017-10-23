@@ -19,6 +19,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.burninglove.dma.burninglove.fragments.OneFragment;
+import com.burninglove.dma.burninglove.fragments.ThreeFragment;
+import com.burninglove.dma.burninglove.fragments.TwoFragment;
+
 public class TabbedActivity extends AppCompatActivity {
 
     /**
@@ -125,13 +129,13 @@ public class TabbedActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch(position){
                 case 0: {
-                    return new BlankFragment();
+                    return new OneFragment();
                 }
                 case 1: {
-                    return new BlankFragment();
+                    return new TwoFragment();
                 }
                 default: {
-                    return new BlankFragment();
+                    return new ThreeFragment();
                 }
             }
         }

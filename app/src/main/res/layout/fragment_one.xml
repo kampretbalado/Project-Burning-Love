@@ -5,11 +5,177 @@
     tools:context="com.burninglove.dma.burninglove.fragments.OneFragment">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="40dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="Profile"
+        android:textSize="15dp"
         android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayoutProfile"
+        android:layout_below="@+id/Profile"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/profilePicture1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cat_sporty"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/Profile"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="212dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="80dp"
+
+            android:text="Nama orang" />
+
+        <TextView
+
+            android:layout_width="212dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="80dp"
+            android:textSize="10dp"
+            android:text="ID   nama_orang" />
+
+        <TextView
+
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="240dp"
+            android:textSize="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
+            android:text="weight: 60kg height 170cm" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/Groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="Groups"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/frameLayoutProfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayoutGroups"
+        android:layout_below="@+id/Groups"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/profilePicture2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cat_sporty"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/Profile"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:id="@+id/groupName"
+            android:layout_width="212dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="27dp"
+            android:layout_marginLeft="80dp"
+
+            android:text="Group Olahraga (30)" />
+
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/Friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="Friends"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/frameLayoutGroups"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayoutFriends"
+        android:layout_below="@+id/Friends"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/profilePicture3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/cat_sporty"
+            android:scaleType="centerCrop"
+            android:layout_below="@+id/Profile"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:id="@+id/friendUsername"
+            android:layout_width="212dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="80dp"
+
+            android:text="Nama teman" />
+
+        <TextView
+
+            android:layout_width="212dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="80dp"
+            android:textSize="10dp"
+            android:text="ID   nama_teman" />
+
+        <TextView
+
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="240dp"
+            android:textSize="10dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorAccent"
+            android:text="looking for new friends!" />
+
+    </FrameLayout>
 
 </RelativeLayout>
