@@ -73,7 +73,7 @@ public class TabbedActivity extends AppCompatActivity {
                         setTitle(R.string.chat);
                         break;
                     case 2:
-                        setTitle(R.string.info);
+                        setTitle(R.string.profile);
                         break;
                 }
             }
@@ -154,7 +154,7 @@ public class TabbedActivity extends AppCompatActivity {
 //                case 1:
 //                    return "Chat";
 //                case 2:
-//                    return "Info";
+//                    return "User";
 //            }
             return null;
         }

@@ -2,8 +2,6 @@ package com.burninglove.dma.burninglove;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,6 +10,7 @@ import android.widget.Button;
 public class ChooseExercise extends AppCompatActivity {
 
     private Button pushUpButton;
+    private Button sitUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +25,16 @@ public class ChooseExercise extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseExercise.this, PushUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sitUpButton = (Button) findViewById(R.id.sit_up_button);
+
+        sitUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseExercise.this, SitUpActivity.class);
                 startActivity(intent);
             }
         });
