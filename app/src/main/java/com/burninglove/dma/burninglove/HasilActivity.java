@@ -68,7 +68,7 @@ public class HasilActivity extends AppCompatActivity {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String cal = pref.getString("Calorie", "0");
         double dCal = Double.parseDouble(cal);
-        tv_totalCal.setText( String.format( "%.1f", dCal ) );
+        tv_totalCal.setText(String.format( "%.1f", dCal ) + " Cal");
     }
 
     @Override

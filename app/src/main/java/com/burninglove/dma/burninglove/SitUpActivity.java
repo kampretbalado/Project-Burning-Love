@@ -2,6 +2,7 @@ package com.burninglove.dma.burninglove;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -71,6 +72,12 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener(this);
+    }
+
+    @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         float xAcc = sensorEvent.values[0];
         float yAcc = sensorEvent.values[1];
@@ -94,8 +101,11 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
         if (mCount > 0 && b_stop.getVisibility() == View.INVISIBLE)
             b_stop.setVisibility(View.VISIBLE);
 
-        if (mCount == limit)
-            done();
+        if (mCount == limit){
+            onPause();
+            b_stop.setText("done");
+            b_stop.setBackgroundColor(Color.GREEN);
+        }
 
     }
 

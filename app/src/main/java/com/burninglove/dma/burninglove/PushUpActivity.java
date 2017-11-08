@@ -3,6 +3,7 @@ package com.burninglove.dma.burninglove;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -81,8 +82,11 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
             if (flag && b_stop.getVisibility() == View.INVISIBLE)
                 b_stop.setVisibility(View.VISIBLE);
 
-            if (counter == limit)
-                done();
+            if (counter == limit) {
+                onPause();
+                b_stop.setText("done");
+                b_stop.setBackgroundColor(Color.GREEN);
+            }
         }
     }
 
