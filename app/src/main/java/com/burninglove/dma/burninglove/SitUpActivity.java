@@ -49,14 +49,15 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
         float xAcc = sensorEvent.values[0];
         float yAcc = sensorEvent.values[1];
 
-        //System.out.printf("xAcc: %.1f\n", xAcc);
-        if(!mSit && xAcc > 1){
+        System.out.printf("xAcc: %.1f\n", xAcc);
+        System.out.printf("yAcc: %.1f\n", yAcc);
+        if(!mSit && xAcc > 1 && yAcc > 8){
             mCount++;
             mSit = true;
             tv_counter.setText("" + mCount);
             mVibrator.vibrate(250);
         }
-        else if(xAcc < -8){
+        else if(xAcc < -0.5 && yAcc < 1){
             mSit = false;
         }
 
