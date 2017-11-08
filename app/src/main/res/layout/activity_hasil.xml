@@ -51,4 +51,23 @@
         android:textColor="@android:color/white"
         android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hasil"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Total:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_totalCal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_total"
+        android:gravity="center"
+        android:text="10.5 Cal"
+        android:textSize="20dp" />
+
 </RelativeLayout>

@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="329"
+                android:text="320"
                 android:textSize="32sp"
                 app:layout_constraintLeft_toLeftOf="@+id/tv_calorie_label"
                 app:layout_constraintTop_toBottomOf="@+id/tv_calorie_label" />
