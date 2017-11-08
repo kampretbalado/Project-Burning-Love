@@ -2,6 +2,7 @@ package com.burninglove.dma.burninglove;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -24,6 +25,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
     private SensorManager mSensorManager;
     private Sensor mProximity;
     int counter = 0;
+    int limit = 10;
     boolean flag;
 
     @Override
@@ -35,15 +37,24 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         pushuplimit = (TextView) findViewById(R.id.pushuplimit);
         b_stop = (Button) findViewById(R.id.stopbutton);
 
+        pushuplimit.setText("/" + limit + " ");
+
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 
         b_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                done();
             }
         });
+    }
+
+    protected void done() {
+        Intent intent = new Intent(PushUpActivity.this, HasilActivity.class);
+        intent.putExtra("type", "pushup");
+        intent.putExtra("counter", counter);
+        startActivity(intent);
     }
 
     @Override
@@ -69,6 +80,8 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
             if (flag && b_stop.getVisibility() == View.INVISIBLE)
                 b_stop.setVisibility(View.VISIBLE);
 
+            if (counter >= limit)
+                done();
         }
     }
 
