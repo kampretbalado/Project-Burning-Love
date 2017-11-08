@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/tv_counter_steps"
+        android:id="@+id/situpcounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -39,7 +39,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_counter_steps"
+        android:layout_above="@+id/situpcounter"
         android:layout_marginBottom="60dp"
         android:gravity="center"
         android:text="Counter:"
@@ -56,7 +56,7 @@
         android:padding="10dp"
         android:text="Berhenti"
         android:textColor="@android:color/white"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:visibility="invisible" />
 
 </RelativeLayout>

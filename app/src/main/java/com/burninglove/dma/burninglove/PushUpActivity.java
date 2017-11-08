@@ -24,9 +24,9 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
 
     private SensorManager mSensorManager;
     private Sensor mProximity;
+    private boolean flag;
     int counter = 0;
     int limit = 10;
-    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         pushuplimit = (TextView) findViewById(R.id.pushuplimit);
         b_stop = (Button) findViewById(R.id.stopbutton);
 
+        limit = getIntent().getIntExtra("limit", 5);
         pushuplimit.setText("/" + limit + " ");
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -80,7 +81,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
             if (flag && b_stop.getVisibility() == View.INVISIBLE)
                 b_stop.setVisibility(View.VISIBLE);
 
-            if (counter >= limit)
+            if (counter == limit)
                 done();
         }
     }
