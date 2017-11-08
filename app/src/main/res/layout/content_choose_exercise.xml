@@ -56,14 +56,14 @@
             />
 
         <Button
+            android:id="@+id/run_button"
             android:layout_width="144dp"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:text="Run"
-            android:textColor="@android:color/white"
-            android:background="@android:color/holo_blue_light"
             android:layout_marginTop="12dp"
-            />
+            android:background="@android:color/holo_blue_light"
+            android:text="Run"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </FrameLayout>
