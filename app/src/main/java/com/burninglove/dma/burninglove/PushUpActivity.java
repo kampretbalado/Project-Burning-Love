@@ -9,12 +9,18 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PushUpActivity extends AppCompatActivity implements SensorEventListener {
 
     private static final float SENSOR_SENSITIVITY = 9;
-    TextView tv_counter;
+
+    private TextView tv_counter;
+    private TextView pushuplimit;
+    private Button b_stop;
+
     private SensorManager mSensorManager;
     private Sensor mProximity;
     int counter = 0;
@@ -26,9 +32,18 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         setContentView(R.layout.activity_push_up);
 
         tv_counter = (TextView) findViewById(R.id.pushupcounter);
+        pushuplimit = (TextView) findViewById(R.id.pushuplimit);
+        b_stop = (Button) findViewById(R.id.stopbutton);
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        b_stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -41,14 +56,19 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         float distance = event.values[0];
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
             if (!flag && distance >= -SENSOR_SENSITIVITY && distance <= SENSOR_SENSITIVITY) {
-                flag = true;
-                Log.d("Log", String.valueOf(flag));
-            } else if (flag){
-                flag = false;
-                Log.d("Log", String.valueOf(flag));
                 counter = counter + 1;
                 tv_counter.setText("" + counter);
+                flag = true;
+            } else if (flag && (distance < -SENSOR_SENSITIVITY || distance > SENSOR_SENSITIVITY)){
+                flag = false;
             }
+
+            if (flag && pushuplimit.getVisibility() == View.INVISIBLE)
+                pushuplimit.setVisibility(View.VISIBLE);
+
+            if (flag && b_stop.getVisibility() == View.INVISIBLE)
+                b_stop.setVisibility(View.VISIBLE);
+
         }
     }
 

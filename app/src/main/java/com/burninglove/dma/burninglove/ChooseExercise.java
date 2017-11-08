@@ -11,6 +11,7 @@ public class ChooseExercise extends AppCompatActivity {
 
     private Button pushUpButton;
     private Button sitUpButton;
+    private Button runButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,8 @@ public class ChooseExercise extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         pushUpButton = (Button) findViewById(R.id.push_up_button);
+        sitUpButton = (Button) findViewById(R.id.sit_up_button);
+        runButton = (Button) findViewById(R.id.run_button);
 
         pushUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,12 +32,18 @@ public class ChooseExercise extends AppCompatActivity {
             }
         });
 
-        sitUpButton = (Button) findViewById(R.id.sit_up_button);
-
         sitUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChooseExercise.this, SitUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseExercise.this, RunActivity.class);
                 startActivity(intent);
             }
         });

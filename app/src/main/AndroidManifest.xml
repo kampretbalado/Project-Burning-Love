@@ -16,7 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PushUpActivity" />
+        <activity
+            android:name=".RunActivity"
+            android:label="@string/title_activity_run">
+
+        </activity>
+        <activity
+            android:name=".PushUpActivity"
+            android:label="@string/title_activity_push_up">
+        </activity>
+        <activity
+            android:name=".SitUpActivity"
+            android:label="@string/title_activity_sit_up">
+        </activity>
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
@@ -32,13 +44,6 @@
             android:label="@string/title_activity_choose_exercise"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ChatPageFriend" />
-        <activity android:name=".SitUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
