@@ -47,6 +47,8 @@ public class HasilActivity extends AppCompatActivity {
             burned = counter * 0.3;
         } else if (type.equals("situp")) {
             burned = counter * 0.2;
+        } else if (type.equals("run")) {
+            burned = getIntent().getFloatExtra("calorie", 0f);
         }
 
         tv_hasil.setText("" + burned + " Cal");
