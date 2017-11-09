@@ -16,7 +16,7 @@ public class HasilActivity extends AppCompatActivity {
     private TextView tv_totalCal;
     private Button btn_back;
 
-    private double burned;
+    private float burned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ public class HasilActivity extends AppCompatActivity {
         int counter = getIntent().getIntExtra("counter", 0);
 
         if (type.equals("pushup")) {
-            burned = counter * 0.3;
+            burned = counter * 0.3f;
         } else if (type.equals("situp")) {
-            burned = counter * 0.2;
+            burned = counter * 0.2f;
         } else if (type.equals("run")) {
             burned = getIntent().getFloatExtra("calorie", 0f);
         }
 
-        tv_hasil.setText("" + burned + " Cal");
+        tv_hasil.setText("" + String.format("%.2f", burned) + " Cal");
     }
 
     private void initSharedPreferences() {
@@ -69,8 +69,8 @@ public class HasilActivity extends AppCompatActivity {
     private void initTotal() {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String cal = pref.getString("Calorie", "0");
-        double dCal = Double.parseDouble(cal);
-        tv_totalCal.setText(String.format( "%.1f", dCal ) + " Cal");
+        double fCal = Float.parseFloat(cal);
+        tv_totalCal.setText(String.format( "%.1f", fCal ) + " Cal");
     }
 
     @Override
