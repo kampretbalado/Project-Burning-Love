@@ -7,9 +7,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,9 +20,11 @@ import android.widget.TextView;
 
 public class SitUpActivity extends AppCompatActivity implements SensorEventListener{
 
-    private TextView tv_counter;
-    private TextView situplimit;
+    private TextView tvCounter;
+    private TextView tvSitUpLimit;
+    private TextView tvTime;
     private Button b_stop;
+    private CardView cv;
 
     private SensorManager mSensorManager;
 
@@ -33,17 +38,23 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
     private boolean flag;
     int limit = 10;
 
+    private long milisecondTime, startTime, timeBuff, updateTime = 0L;
+    private int hours, seconds, miliSeconds, minutes;
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sit_up);
 
-        tv_counter = (TextView) findViewById(R.id.situpcounter);
-        situplimit = (TextView) findViewById(R.id.situplimit);
-        b_stop = (Button) findViewById(R.id.stopbutton);
+        tvCounter = (TextView) findViewById(R.id.sit_up_counter);
+        tvSitUpLimit = (TextView) findViewById(R.id.sit_up_limit);
+        tvTime = (TextView) findViewById(R.id.tv_time_count);
+        b_stop = (Button) findViewById(R.id.stop_button);
+        cv = (CardView) findViewById(R.id.timer);
 
         limit = getIntent().getIntExtra("limit", 5);
-        situplimit.setText("/" + limit + " ");
+        tvSitUpLimit.setText("/" + limit + " ");
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -56,7 +67,32 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
                 done();
             }
         });
+
+        handler = new Handler();
     }
+
+    protected Runnable runnable = new Runnable() {
+        public void run() {
+
+            milisecondTime = SystemClock.uptimeMillis() - startTime;
+
+            updateTime = timeBuff + milisecondTime;
+
+
+            seconds = (int) (updateTime / 1000);
+            minutes = seconds / 60;
+            hours = minutes / 60;
+            minutes = minutes % 60;
+            seconds = seconds % 60;
+            miliSeconds = (int) (updateTime % 1000);
+
+            tvTime.setText(hours + ":" + String.format("%02d", minutes) + ":"
+                    + String.format("%02d", seconds) + ":"
+                    + String.format("%03d", miliSeconds));
+
+            handler.postDelayed(this, 0);
+        }
+    };
 
     protected void done() {
         Intent intent = new Intent(SitUpActivity.this, HasilActivity.class);
@@ -87,7 +123,7 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
         if(!mSit && xAcc > 1 && yAcc > 8){
             mCount++;
             mSit = true;
-            tv_counter.setText("" + mCount);
+            tvCounter.setText("" + mCount);
             mVibrator.vibrate(250);
         }
         else if(xAcc < -0.5 && yAcc < 1){
@@ -95,11 +131,15 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
         }
 
 
-        if (mCount > 0 && situplimit.getVisibility() == View.INVISIBLE)
-            situplimit.setVisibility(View.VISIBLE);
+        if (mCount > 0 && tvSitUpLimit.getVisibility() == View.INVISIBLE)
+            tvSitUpLimit.setVisibility(View.VISIBLE);
 
-        if (mCount > 0 && b_stop.getVisibility() == View.INVISIBLE)
+        if (mCount > 0 && b_stop.getVisibility() == View.INVISIBLE) {
             b_stop.setVisibility(View.VISIBLE);
+            cv.setVisibility(View.VISIBLE);
+            startTime = SystemClock.uptimeMillis();
+            handler.postDelayed(runnable, 0);
+        }
 
         if (mCount == limit){
             onPause();
@@ -111,5 +151,15 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (b_stop.getVisibility() == View.INVISIBLE) {
+            super.onBackPressed();
+        } else {
+            done();
+        }
     }
 }
