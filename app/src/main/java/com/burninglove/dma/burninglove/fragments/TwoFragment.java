@@ -1,8 +1,6 @@
 package com.burninglove.dma.burninglove.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.burninglove.dma.burninglove.ChatPageFriend;
+import com.burninglove.dma.burninglove.ChatRoomActivity;
 import com.burninglove.dma.burninglove.R;
-
-import static com.burninglove.dma.burninglove.R.id.frameLayoutChatFriend;
 
 public class TwoFragment extends Fragment{
 
@@ -39,12 +35,12 @@ public class TwoFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        frameLayoutChat = (FrameLayout) getView().findViewById(frameLayoutChatFriend);
+        frameLayoutChat = (FrameLayout) getView().findViewById(R.id.frameLayoutChatFriend);
 
         frameLayoutChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ChatPageFriend.class);
+                Intent intent = new Intent(getActivity(), ChatRoomActivity.class);
                 startActivity(intent);
             }
         });
