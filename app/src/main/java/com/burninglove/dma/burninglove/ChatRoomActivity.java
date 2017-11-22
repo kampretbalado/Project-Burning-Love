@@ -1,6 +1,7 @@
 package com.burninglove.dma.burninglove;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.burninglove.dma.burninglove.models.ChatMessage;
@@ -28,16 +30,17 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+        setTitle("Friend A");
         List<ChatMessage> listChatMessage = new ArrayList<>();
-        String nicknameDummy = "yeay";
+        String nicknameDummy = "Friend A";
         ThreadsAdapter listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
-        listThreadAdapter.add(new ChatMessage("android.resource://com.burninglove.dma.burninglove/drawable/cat_sporty.jpg", "halo", new Date(), "yeay"));
-        listThreadAdapter.add(new ChatMessage("android.resource://com.burninglove.dma.burninglove/drawable/cat_sporty.jpg", "halo juga", new Date(), "ulala"));
-        listThreadAdapter.add(new ChatMessage("android.resource://com.burninglove.dma.burninglove/drawable/cat_sporty.jpg", "lagi apa?", new Date(), "yeay"));
-        listThreadAdapter.add(new ChatMessage("android.resource://com.burninglove.dma.burninglove/drawable/cat_sporty.jpg", "lagi ngoding tekmob", new Date(), "ulala"));
-        listThreadAdapter.add(new ChatMessage("android.resource://com.burninglove.dma.burninglove/drawable/cat_sporty.jpg", "wah asik bgt", new Date(), "yeay"));
+        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
+        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
+        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
+        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
+        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Friend A"));
     }
 
     private class ThreadsAdapter extends ArrayAdapter<ChatMessage>{
@@ -54,7 +57,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             FrameLayout view = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.list_item_thread, null);
             ChatMessage chatMessage = getItem(position);
             if(chatMessage.getNickname().equals(nickname)){
-                FrameLayout opponentView = (FrameLayout) view.findViewById(R.id.chat_opponent);
+                RelativeLayout opponentView = (RelativeLayout) view.findViewById(R.id.chat_opponent);
                 opponentView.setVisibility(View.GONE);
 
                 TextView chatContentView = (TextView) view.findViewById(R.id.chat_content_self);
@@ -64,13 +67,13 @@ public class ChatRoomActivity extends AppCompatActivity {
                 chatTimeView.setText(dateFormat.format(chatMessage.getTime()));
             }
             else{
-                FrameLayout selfView = (FrameLayout) view.findViewById(R.id.chat_self);
+                RelativeLayout selfView = (RelativeLayout) view.findViewById(R.id.chat_self);
                 ImageView profilePictureView = (ImageView) view.findViewById(R.id.profile_picture_opponent);
                 TextView chatContentView = (TextView) view.findViewById(R.id.chat_content_opponent);
                 TextView chatTimeView = (TextView) view.findViewById(R.id.chat_time_opponent);
                 selfView.setVisibility(View.GONE);
 
-                Picasso.with(getContext()).load(chatMessage.getProfilePictureURI()).into(profilePictureView);
+                Picasso.with(getContext()).load(Integer.parseInt(chatMessage.getProfilePictureURI())).error(Color.GRAY).into(profilePictureView);
                 chatContentView.setText(chatMessage.getContent());
                 chatTimeView.setText(dateFormat.format(chatMessage.getTime()));
             }
