@@ -73,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String GROUP_CHAT_ROOM_KEY_PROFILE_PICTURE = "group_picture";
 
     // CHAT_ITEM Table - column names
-    private static final String CHAT_ITEM_ROOM_KEY_CONTENT = "content";
+    private static final String CHAT_ITEM_KEY_CONTENT = "content";
 
     private static final String CREATE_TABLE_PERSON =
             "CREATE TABLE " + TABLE_PERSON + "(" +
@@ -104,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             EXERCISE_HISTORY_KEY_CALORIE + " FLOAT, " +
             "PRIMARY KEY (" + COMMON_KEY_USERNAME + ", " + EXERCISE_HISTORY_KEY_ID + ")," +
             "FOREIGN KEY (" + COMMON_KEY_USERNAME + ") REFERENCES " +
-            TABLE_PERSON+ "(" + COMMON_KEY_USERNAME + ")" +
+                TABLE_PERSON+ "(" + COMMON_KEY_USERNAME + ")" +
             ")";
 
     private static final String CREATE_TABLE_RUN_DETAILS =
@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     RUN_DETAILS_KEY_STEPS + " INTEGER, " +
                     "PRIMARY KEY (" + EXERCISE_HISTORY_KEY_ID + ")," +
                     "FOREIGN KEY (" + EXERCISE_HISTORY_KEY_ID + ") REFERENCES " +
-                    TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
+                        TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
                     ")";
 
     private static final String CREATE_TABLE_SITUP_DETAILS =
@@ -125,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     SITUP_DETAILS_KEY_TIME + " INTEGER, " +
                     "PRIMARY KEY (" + EXERCISE_HISTORY_KEY_ID + ")," +
                     "FOREIGN KEY (" + EXERCISE_HISTORY_KEY_ID + ") REFERENCES " +
-                    TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
+                        TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
                     ")";
 
     private static final String CREATE_TABLE_PUSHUP_DETAILS =
@@ -135,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     PUSHUP_DETAILS_KEY_TIME + " INTEGER, " +
                     "PRIMARY KEY (" + EXERCISE_HISTORY_KEY_ID + ")," +
                     "FOREIGN KEY (" + EXERCISE_HISTORY_KEY_ID + ") REFERENCES " +
-                    TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
+                        TABLE_EXERCISE_HISTORY + "(" + EXERCISE_HISTORY_KEY_ID + ")" +
                     ")";
 
     private static final String CREATE_TABLE_CHAT_ROOM =
@@ -146,8 +146,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_PRIVATE_CHAT_ROOM =
             "CREATE TABLE " + TABLE_PRIVATE_CHAT_ROOM + "(" +
-                    CHAT_ROOM_KEY_ID + "INTEGER AUTO INCREMENT," +
+                    CHAT_ROOM_KEY_ID + "INTEGER," +
+                    COMMON_KEY_USERNAME + " VARCHAR(30), " +
+                    "PRIMARY KEY (" + CHAT_ROOM_KEY_ID + ", " + COMMON_KEY_USERNAME + ")" +
+                    "FOREIGN KEY (" + CHAT_ROOM_KEY_ID + ") REFERENCES " +
+                        TABLE_CHAT_ROOM + "(" + CHAT_ROOM_KEY_ID + ")" +
+                    "FOREIGN KEY (" + COMMON_KEY_USERNAME + ") REFERENCES " +
+                        TABLE_PERSON+ "(" + COMMON_KEY_USERNAME + ")" +
+                    ")";
+
+    private static final String CREATE_TABLE_GROUP_CHAT_ROOM =
+            "CREATE TABLE " + TABLE_GROUP_CHAT_ROOM + "(" +
+                    CHAT_ROOM_KEY_ID + "INTEGER," +
+                    GROUP_CHAT_ROOM_KEY_NAME + "INTEGER AUTO INCREMENT" +
+                    GROUP_CHAT_ROOM_KEY_PROFILE_PICTURE + "VARCHAR(300)" +
                     "PRIMARY KEY (" + CHAT_ROOM_KEY_ID + ")" +
+                    ")";
+
+    private static final String CREATE_TABLE_CHAT_MEMBERS =
+            "CREATE TABLE " + TABLE_CHAT_MEMBERS + "(" +
+                    CHAT_ROOM_KEY_ID + "INTEGER," +
+                    COMMON_KEY_USERNAME + " VARCHAR(30), " +
+                    "PRIMARY KEY (" + CHAT_ROOM_KEY_ID + ", " + COMMON_KEY_USERNAME + ")" +
+                    "FOREIGN KEY (" + CHAT_ROOM_KEY_ID + ") REFERENCES " +
+                        TABLE_GROUP_CHAT_ROOM + "(" + CHAT_ROOM_KEY_ID + ")" +
+                    "FOREIGN KEY (" + COMMON_KEY_USERNAME + ") REFERENCES " +
+                        TABLE_PERSON+ "(" + COMMON_KEY_USERNAME + ")" +
+                    ")";
+
+    private static final String CREATE_TABLE_CHAT_ITEM =
+            "CREATE TABLE " + TABLE_CHAT_ITEM + "(" +
+                    CHAT_ROOM_KEY_ID + "INTEGER," +
+                    COMMON_KEY_USERNAME + " VARCHAR(30), " +
+                    COMMON_KEY_TIMESTAMP + " TIMESTAMP, " +
+                    CHAT_ITEM_KEY_CONTENT + " TEXT, " +
+                    "PRIMARY KEY (" + CHAT_ROOM_KEY_ID + ", " + COMMON_KEY_USERNAME + ", "
+                        + COMMON_KEY_TIMESTAMP + ")" +
+                    "FOREIGN KEY (" + CHAT_ROOM_KEY_ID + ") REFERENCES " +
+                        TABLE_GROUP_CHAT_ROOM + "(" + CHAT_ROOM_KEY_ID + ")" +
+                    "FOREIGN KEY (" + COMMON_KEY_USERNAME + ") REFERENCES " +
+                        TABLE_PERSON+ "(" + COMMON_KEY_USERNAME + ")" +
                     ")";
 
     public DatabaseHelper(Context context) {
