@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,9 @@ import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
+    private ThreadsAdapter listThreadAdapter;
+    private ArrayList<ChatMessage> a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +40,32 @@ public class ChatRoomActivity extends AppCompatActivity {
         setTitle("Friend A");
         List<ChatMessage> listChatMessage = new ArrayList<>();
         String nicknameDummy = "Friend A";
-        ThreadsAdapter listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
+        listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
 
+        a = new ArrayList();
+        a.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
+        a.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
+        a.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
+        a.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
+        a.add(new ChatMessage(""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Friend A"));
 
-
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Friend A"));
+        handler.postDelayed(runnable, 1000);
     }
+
+    private Handler handler = new Handler();
+    private int i = 0;
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (i==a.size())
+                handler.removeCallbacks(runnable);
+            else
+                listThreadAdapter.add(a.get(i++));
+            handler.postDelayed(this, 3000);
+        }
+    };
 
     private class ThreadsAdapter extends ArrayAdapter<ChatMessage>{
         private String nickname;
