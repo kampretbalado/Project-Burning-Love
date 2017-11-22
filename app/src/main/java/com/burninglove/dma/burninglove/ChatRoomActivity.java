@@ -1,6 +1,8 @@
 package com.burninglove.dma.burninglove;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.burninglove.dma.burninglove.models.ChatMessage;
+import com.burninglove.dma.burninglove.util.ImageUtility;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -36,6 +39,9 @@ public class ChatRoomActivity extends AppCompatActivity {
         ThreadsAdapter listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
+
+
+
         listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
         listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
         listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
@@ -73,7 +79,8 @@ public class ChatRoomActivity extends AppCompatActivity {
                 TextView chatTimeView = (TextView) view.findViewById(R.id.chat_time_opponent);
                 selfView.setVisibility(View.GONE);
 
-                Picasso.with(getContext()).load(Integer.parseInt(chatMessage.getProfilePictureURI())).error(Color.GRAY).into(profilePictureView);
+                //Picasso.with(getContext()).load(chatMessage.getProfilePictureURI()).error(Color.GRAY).into(profilePictureView);
+                profilePictureView.setImageBitmap(ImageUtility.decodeSampledBitmapFromResource(getResources(), Integer.parseInt(chatMessage.getProfilePictureURI()), 100, 100));
                 chatContentView.setText(chatMessage.getContent());
                 chatTimeView.setText(dateFormat.format(chatMessage.getTime()));
             }

@@ -1,5 +1,6 @@
 package com.burninglove.dma.burninglove;
 
+import android.graphics.Bitmap;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.burninglove.dma.burninglove.fragments.OneFragment;
 import com.burninglove.dma.burninglove.fragments.ThreeFragment;
 import com.burninglove.dma.burninglove.fragments.TwoFragment;
+import com.burninglove.dma.burninglove.util.ImageUtility;
 
 public class TabbedActivity extends AppCompatActivity {
 

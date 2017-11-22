@@ -44,6 +44,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HasilActivity" />
         <activity android:name=".ChatRoomActivity" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>
