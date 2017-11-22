@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.burninglove.dma.burninglove.helper.DatabaseHelper;
 import com.burninglove.dma.burninglove.models.ChatMessage;
 import com.burninglove.dma.burninglove.util.ImageUtility;
 import com.squareup.picasso.Picasso;
@@ -28,6 +30,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +43,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
 
-
-
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
-        listThreadAdapter.add(new ChatMessage(""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Friend A"));
+        db = new DatabaseHelper(getApplicationContext());
+        List<ChatMessage> cms = db.getAllChatsFromId(2);
+        Log.e("testDB", cms.toString());
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo", new Date(), "demia"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo juga", new Date(), "watashi"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi apa?", new Date(), "demia"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "demia"));
     }
 
     private class ThreadsAdapter extends ArrayAdapter<ChatMessage>{
