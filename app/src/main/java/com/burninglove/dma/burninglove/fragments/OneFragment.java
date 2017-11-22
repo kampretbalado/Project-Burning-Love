@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.burninglove.dma.burninglove.ProfileActivity;
 import com.burninglove.dma.burninglove.R;
@@ -28,7 +28,7 @@ public class OneFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_one, container, false);
-        FrameLayout frame = (FrameLayout) view.findViewById(R.id.frameLayoutProfile);
+        LinearLayout frame = (LinearLayout) view.findViewById(R.id.frameLayoutProfile);
         frame.setOnClickListener(new View.OnClickListener()
         {
             @Override

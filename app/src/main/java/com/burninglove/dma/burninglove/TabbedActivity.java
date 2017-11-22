@@ -58,7 +58,7 @@ public class TabbedActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            tabLayout.getTabAt(i).setIcon(R.drawable.cat);
+            tabLayout.getTabAt(i).setIcon(R.drawable.cat_sporty);
         }
         setTitle(R.string.home);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
