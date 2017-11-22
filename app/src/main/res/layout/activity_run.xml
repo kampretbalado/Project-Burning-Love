@@ -225,6 +225,6 @@
         android:padding="10dp"
         android:text="Berhenti"
         android:textColor="@android:color/white"
-        android:textSize="30dp" />
+        android:textSize="24dp" />
 
 </RelativeLayout>

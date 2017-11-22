@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:paddingRight="168dp"
         android:src="@drawable/cat_sporty"
         android:layout_gravity="top"/>
 
