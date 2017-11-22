@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.burninglove.dma.burninglove">
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,17 +20,13 @@
         </activity>
         <activity
             android:name=".RunActivity"
-            android:label="@string/title_activity_run">
-
-        </activity>
+            android:label="@string/title_activity_run"></activity>
         <activity
             android:name=".PushUpActivity"
-            android:label="@string/title_activity_push_up">
-        </activity>
+            android:label="@string/title_activity_push_up"></activity>
         <activity
             android:name=".SitUpActivity"
-            android:label="@string/title_activity_sit_up">
-        </activity>
+            android:label="@string/title_activity_sit_up"></activity>
         <activity
             android:name=".TabbedActivity"
             android:label="@string/title_activity_tabbed"
@@ -43,7 +41,7 @@
             android:name=".ChooseExercise"
             android:label="@string/title_activity_choose_exercise"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChatPageFriend" />
+        <activity android:name=".ChatRoomActivity"></activity>
     </application>
 
 </manifest>

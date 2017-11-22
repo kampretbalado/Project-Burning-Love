@@ -1,0 +1,82 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true">
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_opponent"
+        android:layout_alignParentStart="true"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/cat_sporty"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp"
+        android:id="@+id/profile_picture_opponent" />
+
+    <TextView
+        android:layout_width="212dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:textSize="15dp"
+        android:text="How are you?"
+        android:id="@+id/chat_content_opponent" />
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="180dp"
+        android:textSize="10dp"
+        android:text="17:33"
+        android:id="@+id/chat_time_opponent"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_self"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true">
+
+
+        <TextView
+            android:layout_width="212dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="260dp"
+            android:textSize="15dp"
+            android:text="Hello"
+            android:id="@+id/chat_content_self"/>
+
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="210dp"
+            android:textSize="10dp"
+            android:text="17:33"
+            android:id="@+id/chat_time_self"/>
+
+    </FrameLayout>
+
+
+
+</FrameLayout>
