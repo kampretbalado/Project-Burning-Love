@@ -9,8 +9,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,9 +21,11 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
 
     private static final float SENSOR_SENSITIVITY = 9;
 
-    private TextView tv_counter;
-    private TextView pushuplimit;
+    private TextView tvCounter;
+    private TextView tvPushUpLimit;
+    private TextView tvTime;
     private Button b_stop;
+    private CardView cv;
 
     private SensorManager mSensorManager;
     private Sensor mProximity;
@@ -29,17 +33,23 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
     int counter = 0;
     int limit = 10;
 
+    private long milisecondTime, startTime, timeBuff, updateTime = 0L;
+    private int hours, seconds, miliSeconds, minutes;
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_up);
 
-        tv_counter = (TextView) findViewById(R.id.pushupcounter);
-        pushuplimit = (TextView) findViewById(R.id.pushuplimit);
-        b_stop = (Button) findViewById(R.id.stopbutton);
+        tvCounter = (TextView) findViewById(R.id.push_up_counter);
+        tvPushUpLimit = (TextView) findViewById(R.id.push_up_limit);
+        tvTime = (TextView) findViewById(R.id.tv_time_count);
+        b_stop = (Button) findViewById(R.id.stop_button);
+        cv = (CardView) findViewById(R.id.timer);
 
         limit = getIntent().getIntExtra("limit", 5);
-        pushuplimit.setText("/" + limit + " ");
+        tvPushUpLimit.setText("/" + limit + " ");
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -50,7 +60,32 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
                 done();
             }
         });
+
+        handler = new Handler();
     }
+
+    protected Runnable runnable = new Runnable() {
+        public void run() {
+
+            milisecondTime = SystemClock.uptimeMillis() - startTime;
+
+            updateTime = timeBuff + milisecondTime;
+
+
+            seconds = (int) (updateTime / 1000);
+            minutes = seconds / 60;
+            hours = minutes / 60;
+            minutes = minutes % 60;
+            seconds = seconds % 60;
+            miliSeconds = (int) (updateTime % 1000);
+
+            tvTime.setText(hours + ":" + String.format("%02d", minutes) + ":"
+                    + String.format("%02d", seconds) + ":"
+                    + String.format("%03d", miliSeconds));
+
+            handler.postDelayed(this, 0);
+        }
+    };
 
     protected void done() {
         Intent intent = new Intent(PushUpActivity.this, HasilActivity.class);
@@ -70,17 +105,21 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
             if (!flag && distance >= -SENSOR_SENSITIVITY && distance <= SENSOR_SENSITIVITY) {
                 counter = counter + 1;
-                tv_counter.setText("" + counter);
+                tvCounter.setText("" + counter);
                 flag = true;
-            } else if (flag && (distance < -SENSOR_SENSITIVITY || distance > SENSOR_SENSITIVITY)){
+            } else if (flag && (distance < -SENSOR_SENSITIVITY || distance > SENSOR_SENSITIVITY)) {
                 flag = false;
             }
 
-            if (flag && pushuplimit.getVisibility() == View.INVISIBLE)
-                pushuplimit.setVisibility(View.VISIBLE);
+            if (flag && tvPushUpLimit.getVisibility() == View.INVISIBLE)
+                tvPushUpLimit.setVisibility(View.VISIBLE);
 
-            if (flag && b_stop.getVisibility() == View.INVISIBLE)
+            if (flag && b_stop.getVisibility() == View.INVISIBLE) {
                 b_stop.setVisibility(View.VISIBLE);
+                cv.setVisibility(View.VISIBLE);
+                startTime = SystemClock.uptimeMillis();
+                handler.postDelayed(runnable, 0);
+            }
 
             if (counter == limit) {
                 onPause();
@@ -102,5 +141,14 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         // Be sure to unregister the sensor when the activity pauses.
         super.onPause();
         mSensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (b_stop.getVisibility() == View.INVISIBLE) {
+            super.onBackPressed();
+        } else {
+            done();
+        }
     }
 }

@@ -9,11 +9,12 @@
     tools:showIn="@layout/activity_choose_exercise">
 
     <ImageView
+        android:id="@+id/iv_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/cat_sporty"
-        android:layout_gravity="top"/>
+        android:layout_gravity="top"
+        android:paddingRight="168dp"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_marginTop="100dp"

@@ -32,7 +32,7 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="27dp"
-                android:layout_height="25dp"
+                android:layout_height="24dp"
                 app:srcCompat="@mipmap/ic_launcher_round"
                 android:layout_marginRight="8dp"
                 app:layout_constraintRight_toRightOf="parent"

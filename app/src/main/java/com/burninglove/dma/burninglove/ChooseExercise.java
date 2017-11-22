@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.burninglove.dma.burninglove.util.ImageUtility;
 
 public class ChooseExercise extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class ChooseExercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_exercise);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ImageView background = (ImageView) findViewById(R.id.iv_background);
         setSupportActionBar(toolbar);
 
         pushUpButton = (Button) findViewById(R.id.push_up_button);
@@ -47,6 +51,8 @@ public class ChooseExercise extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        background.setImageBitmap(ImageUtility.decodeSampledBitmapFromResource(getResources(), R.drawable.cat_sporty, 640, 480));
     }
 
     @Override

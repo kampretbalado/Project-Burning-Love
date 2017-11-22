@@ -1,181 +1,184 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.burninglove.dma.burninglove.fragments.OneFragment">
 
     <TextView
-        android:id="@+id/Profile"
+        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingTop="12dp"
         android:text="Profile"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/frameLayoutProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayoutProfile"
-        android:layout_below="@+id/Profile"
-        android:layout_alignParentStart="true">
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp">
 
         <ImageView
             android:id="@+id/profilePicture1"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/cat_sporty"
             android:scaleType="centerCrop"
-            android:layout_below="@+id/Profile"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="13dp" />
+            android:src="@drawable/cat_sporty" />
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="212dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-
-            android:text="Nama orang" />
-
-        <TextView
-
-            android:layout_width="212dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="80dp"
-            android:textSize="10dp"
-            android:text="ID   nama_orang" />
-
-        <TextView
-
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="26dp"
-            android:layout_marginLeft="240dp"
-            android:textSize="10dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"
-            android:text="weight: 60kg height 170cm" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:text="Nama orang" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:text="ID   nama_orang"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="weight: 60kg"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="height 170cm"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:background="#ccc" />
 
     <TextView
-        android:id="@+id/Groups"
+        android:id="@+id/groups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
         android:text="Groups"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/frameLayoutProfile"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/frameLayoutGroups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayoutGroups"
-        android:layout_below="@+id/Groups"
-        android:layout_alignParentStart="true">
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp">
 
         <ImageView
             android:id="@+id/profilePicture2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/cat_sporty"
             android:scaleType="centerCrop"
-            android:layout_below="@+id/Profile"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="13dp" />
+            android:src="@drawable/cat_sporty" />
 
         <TextView
             android:id="@+id/groupName"
-            android:layout_width="212dp"
+            android:layout_width="200dp"
             android:layout_height="20dp"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="27dp"
-            android:layout_marginLeft="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:text="Grup Olahraga (30)" />
 
-            android:text="Group Olahraga (30)" />
+    </LinearLayout>
 
-
-    </FrameLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:background="#ccc" />
 
     <TextView
-        android:id="@+id/Friends"
+        android:id="@+id/friendProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
         android:text="Friends"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/frameLayoutGroups"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/frameLayoutFriendProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayoutFriends"
-        android:layout_below="@+id/Friends"
-        android:layout_alignParentStart="true">
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp">
 
         <ImageView
             android:id="@+id/profilePicture3"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/cat_sporty"
             android:scaleType="centerCrop"
-            android:layout_below="@+id/Profile"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="13dp" />
+            android:src="@drawable/cat_sporty" />
 
-        <TextView
-            android:id="@+id/friendUsername"
-            android:layout_width="212dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-
-            android:text="Nama teman" />
-
-        <TextView
-
-            android:layout_width="212dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="80dp"
-            android:textSize="10dp"
-            android:text="ID   nama_teman" />
-
-        <TextView
-
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Profile"
-            android:layout_marginTop="26dp"
-            android:layout_marginLeft="240dp"
-            android:textSize="10dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorAccent"
-            android:text="looking for new friends!" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/friendUsername"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:text="Nama Teman" />
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:text="ID   nama_trang"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="weight: 80kg"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="height 190cm"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
