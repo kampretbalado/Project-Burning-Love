@@ -36,21 +36,27 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-        setTitle("Friend A");
+        setTitle("kasel");
         List<ChatMessage> listChatMessage = new ArrayList<>();
-        String nicknameDummy = "Friend A";
+        String nicknameDummy = "kasel";
         ThreadsAdapter listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
 
+        int chatId = 2;
+
         db = new DatabaseHelper(getApplicationContext());
-        List<ChatMessage> cms = db.getAllChatsFromId(2);
+        List<ChatMessage> cms = db.getAllChatsFromId(chatId);
         Log.e("testDB", cms.toString());
-        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo", new Date(), "demia"));
+        for (ChatMessage cm : cms) {
+            listThreadAdapter.add(new ChatMessage(cm.getChatId(), ""+R.drawable.cat_sporty, cm.getContent(), cm.getTime(), cm.getNickname()));
+        }
+       /*
         listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo juga", new Date(), "watashi"));
         listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi apa?", new Date(), "demia"));
         listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
         listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "demia"));
+        */
     }
 
     private class ThreadsAdapter extends ArrayAdapter<ChatMessage>{

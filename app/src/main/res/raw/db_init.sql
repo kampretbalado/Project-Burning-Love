@@ -19,3 +19,7 @@ insert into CHAT_MEMBERS (chat_id, username) values (1, 'aisha');
 insert into PRIVATE_CHAT_ROOM (chat_id, username) values (2, 'demia');
 insert into CHAT_ITEM (chat_id, username, timestamp, content) values (1, 'laias', 1511369168, 'halo');
 insert into CHAT_ITEM (chat_id, username, timestamp, content) values (2, 'demia', 1511369170, 'hai');
+insert into CHAT_ITEM (chat_id, username, timestamp, content) values (2, 'kasel', 1511369171, 'halo dem');
+insert into CHAT_ITEM (chat_id, username, timestamp, content) values (2, 'demia', 1511369172, 'lo mau kena nerf ya');
+insert into CHAT_ITEM (chat_id, username, timestamp, content) values (2, 'kasel', 1511369173, 'iya nih lo juga ya');
+insert into CHAT_ITEM (chat_id, username, timestamp, content) values (2, 'demia', 1511369174, 'sedih ya :(');

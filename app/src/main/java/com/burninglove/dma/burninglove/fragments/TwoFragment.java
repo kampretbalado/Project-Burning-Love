@@ -56,13 +56,13 @@ public class TwoFragment extends Fragment{
 
         List<ChatRoom> rooms = new ArrayList<ChatRoom>();
 
-
         frameLayoutChat = (FrameLayout) getView().findViewById(R.id.frameLayoutChatFriend);
 
         frameLayoutChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChatRoomActivity.class);
+                
                 startActivity(intent);
             }
         });
