@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/chat_opponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/profile_picture_opponent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cat_sporty" />
+
+        <TextView
+            android:id="@+id/chat_content_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/profile_picture_opponent"
+            android:background="#ddd"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="How are you?"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/chat_time_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/chat_content_opponent"
+            android:layout_below="@id/chat_content_opponent"
+            android:paddingTop="2dp"
+            android:text="17:33"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_self"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="right"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/chat_content_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:background="#add"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="Hello"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/chat_time_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/chat_content_self"
+            android:layout_below="@id/chat_content_self"
+            android:paddingTop="2dp"
+            android:text="17:33"
+            android:textSize="10dp" />
+    </RelativeLayout>
+</FrameLayout>

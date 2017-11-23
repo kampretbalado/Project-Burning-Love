@@ -41,8 +41,10 @@
             android:name=".ChooseExercise"
             android:label="@string/title_activity_choose_exercise"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ChatPageFriend" />
+
+        <activity android:name=".ChatRoomActivity" />
         <activity android:name=".HasilActivity"></activity>
+
     </application>
 
 </manifest>
