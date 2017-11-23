@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.burninglove.dma.burninglove.R;
 import com.burninglove.dma.burninglove.models.ChatMessage;
+import com.burninglove.dma.burninglove.models.ChatRoom;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -295,8 +296,84 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 chatMessages.add(cm);
             } while (c.moveToNext());
         }
-
+        c.close();
         return chatMessages;
+    }
+
+    public ChatRoom getPrivateChatRoomFromId(int id) {
+        String selectQuery =
+                "SELECT * FROM " + TABLE_PRIVATE_CHAT_ROOM +
+                        " WHERE " + CHAT_ROOM_KEY_ID + "=" + id;
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        c.moveToFirst();
+        String username = c.getString(c.getColumnIndex(COMMON_KEY_USERNAME));
+        ChatMessage latest = getLatestChatFromId(id);
+        ChatRoom cr = new ChatRoom(id, true, username, latest.getContent());
+        c.close();
+        return cr;
+    }
+
+    public ChatMessage getLatestChatFromId(int id) {
+        String selectQuery =
+                "SELECT * FROM " + TABLE_CHAT_ITEM +
+                        " WHERE " + CHAT_ROOM_KEY_ID + "=" + id +
+                        " ORDER BY " + COMMON_KEY_TIMESTAMP + " DESC LIMIT 1";
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        c.moveToFirst();
+        String username = c.getString(c.getColumnIndex(COMMON_KEY_USERNAME));
+        String content  = c.getString(c.getColumnIndex(CHAT_ITEM_KEY_CONTENT));
+        java.sql.Timestamp t = new java.sql.Timestamp(c.getInt(c.getColumnIndex(COMMON_KEY_TIMESTAMP)));
+        java.util.Date d = new java.util.Date(t.getTime());
+
+        c.close();
+        ChatMessage cm = new ChatMessage(id, null, content, d, username);
+        return cm;
+    }
+
+    public List<ChatRoom> getAllChatRoom() {
+        List<ChatRoom> chatRooms = new ArrayList<ChatRoom>();
+        String selectQuery =
+                "SELECT * FROM " + TABLE_CHAT_ROOM;
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                int id = (c.getInt((c.getColumnIndex(CHAT_ROOM_KEY_ID))));
+                selectQuery =
+                        "SELECT * FROM " + TABLE_GROUP_CHAT_ROOM +
+                                " WHERE " + CHAT_ROOM_KEY_ID + "=" + id;
+                Cursor temp = db.rawQuery(selectQuery, null);
+                boolean isPrivateChat = false;
+                ChatMessage latest = getLatestChatFromId(id);
+                String latestChat = latest.getContent();
+                String username;
+                if (temp == null) {
+                    isPrivateChat = true;
+                    username = latest.getNickname();
+                } else {
+                    isPrivateChat = false;
+                    temp.moveToFirst();
+                    username = temp.getString(temp.getColumnIndex(GROUP_CHAT_ROOM_KEY_NAME));
+                }
+
+                ChatRoom cr = new ChatRoom(id, isPrivateChat, username, latestChat);
+                chatRooms.add(cr);
+                temp.close();
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return chatRooms;
     }
 
     /**
