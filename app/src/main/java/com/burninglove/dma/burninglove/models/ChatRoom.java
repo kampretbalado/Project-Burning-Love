@@ -1,6 +1,6 @@
 package com.burninglove.dma.burninglove.models;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Amalia Shaliha on 11/7/2017.
@@ -11,7 +11,8 @@ public class ChatRoom {
     private boolean isPrivateChat;
     private String chatRoomName;
     private String latestChat;
-    private String profilePicture;
+    private String profilePictureURI;
+    private Date time;
 
     public ChatRoom(int chatId, boolean isPrivateChat, String chatRoomName, String latestChat) {
         this.chatId = chatId;
@@ -20,12 +21,12 @@ public class ChatRoom {
         this.latestChat = latestChat;
     }
 
-    public ChatRoom(int chatId, boolean isPrivateChat, String chatRoomName, String latestChat, String profilePicture) {
+    public ChatRoom(int chatId, boolean isPrivateChat, String chatRoomName, String latestChat, String profilePictureURI) {
         this.chatId = chatId;
         this.isPrivateChat = isPrivateChat;
         this.chatRoomName = chatRoomName;
         this.latestChat = latestChat;
-        this.profilePicture = profilePicture;
+        this.profilePictureURI = profilePictureURI;
     }
 
     public int getChatId() {
@@ -60,12 +61,19 @@ public class ChatRoom {
         this.latestChat = latestChat;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getProfilePictureURI() {
+        return profilePictureURI;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePictureURI(String profilePictureURI) {
+        this.profilePictureURI = profilePictureURI;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
 }
