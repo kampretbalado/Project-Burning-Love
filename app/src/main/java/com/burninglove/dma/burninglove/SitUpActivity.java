@@ -145,6 +145,7 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
             onPause();
             b_stop.setText("done");
             b_stop.setBackgroundColor(Color.GREEN);
+            handler.removeCallbacks(runnable);
         }
 
     }

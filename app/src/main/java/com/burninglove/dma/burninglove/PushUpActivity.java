@@ -31,7 +31,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
     private Sensor mProximity;
     private boolean flag;
     int counter = 0;
-    int limit = 10;
+    int limit = 0;
 
     private long milisecondTime, startTime, timeBuff, updateTime = 0L;
     private int hours, seconds, miliSeconds, minutes;
@@ -104,17 +104,17 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
         float distance = event.values[0];
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
             if (!flag && distance >= -SENSOR_SENSITIVITY && distance <= SENSOR_SENSITIVITY) {
+                flag = true;
+            } else if (flag) {
                 counter = counter + 1;
                 tvCounter.setText("" + counter);
-                flag = true;
-            } else if (flag && (distance < -SENSOR_SENSITIVITY || distance > SENSOR_SENSITIVITY)) {
                 flag = false;
             }
 
-            if (flag && tvPushUpLimit.getVisibility() == View.INVISIBLE)
+            if (!flag && tvPushUpLimit.getVisibility() == View.INVISIBLE)
                 tvPushUpLimit.setVisibility(View.VISIBLE);
 
-            if (flag && b_stop.getVisibility() == View.INVISIBLE) {
+            if (!flag && b_stop.getVisibility() == View.INVISIBLE) {
                 b_stop.setVisibility(View.VISIBLE);
                 cv.setVisibility(View.VISIBLE);
                 startTime = SystemClock.uptimeMillis();
@@ -125,6 +125,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
                 onPause();
                 b_stop.setText("done");
                 b_stop.setBackgroundColor(Color.GREEN);
+                handler.removeCallbacks(runnable);
             }
         }
     }

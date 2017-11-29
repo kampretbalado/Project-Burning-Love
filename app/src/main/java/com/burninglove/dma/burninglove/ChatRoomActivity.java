@@ -1,12 +1,14 @@
 package com.burninglove.dma.burninglove;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,6 +39,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     DatabaseHelper db;
 
     private ThreadsAdapter listThreadAdapter;
+    private ListView listViewThread;
     private ArrayList<ChatMessage> a;
 
     @Override
@@ -47,7 +51,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         String nicknameDummy = "kasel";
         listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
-        ListView listViewThread = (ListView) findViewById(R.id.thread_container);
+        listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
 
         int chatId = 2;
@@ -101,10 +105,22 @@ public class ChatRoomActivity extends AppCompatActivity {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if (i==a.size())
+            if (i==a.size()) {
                 handler.removeCallbacks(runnable);
-            else
+                Button b = (Button) findViewById(R.id.btn);
+                b.setVisibility(View.VISIBLE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getBaseContext(), Bertemu.class);
+                        startActivity(intent);
+                    }
+                });
+
+            } else {
                 listThreadAdapter.add(a.get(i++));
+                listViewThread.setSelection(listThreadAdapter.getCount() - 1);
+            }
             handler.postDelayed(this, 2500);
         }
     };

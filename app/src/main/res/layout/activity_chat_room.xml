@@ -4,10 +4,22 @@
     android:layout_height="wrap_content"
     tools:context="com.burninglove.dma.burninglove.ChatRoomActivity">
 
-    <ListView android:id="@+id/thread_container"
+    <ListView
+        android:id="@+id/thread_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+
+    <Button
+        android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@null"/>
-
+        android:layout_gravity="bottom"
+        android:background="@android:color/holo_green_light"
+        android:padding="10dp"
+        android:text="Let's Go"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        android:visibility="invisible" />
 
 </FrameLayout>

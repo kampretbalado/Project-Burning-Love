@@ -5,49 +5,50 @@
     android:clickable="true">
 
     <FrameLayout
+        android:id="@+id/frameLayoutChatRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frameLayoutChatRoom"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:paddingBottom="14dp">
 
         <ImageView
             android:id="@+id/profile_picture_chatroom"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/cat_sporty"
-            android:scaleType="centerCrop"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="12dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cat_sporty" />
 
         <TextView
             android:id="@+id/username_chatroom"
             android:layout_width="212dp"
             android:layout_height="24dp"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="80dp"
-            android:textSize="20dp"
-            android:text="Teman" />
+            android:layout_marginTop="20dp"
+            android:text="Teman"
+            android:textSize="20dp" />
 
         <TextView
 
+            android:id="@+id/lastchat_chatroom"
             android:layout_width="212dp"
             android:layout_height="20dp"
-            android:id="@+id/lastchat_chatroom"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="80dp"
-            android:textSize="10dp"
-            android:text="Mau main kemana nanti? Jadi mau ke..." />
+            android:layout_marginTop="50dp"
+            android:text="Mau main kemana nanti? Jadi mau ke..."
+            android:textSize="10dp" />
 
         <TextView
 
+            android:id="@+id/timestamp_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/timestamp_chat"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="320dp"
-            android:textSize="10dp"
-            android:text="17:33" />
+            android:layout_marginTop="20dp"
+            android:text="17:33"
+            android:textSize="10dp" />
 
     </FrameLayout>
 </FrameLayout>
