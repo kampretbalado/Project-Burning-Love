@@ -49,7 +49,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         List<ChatMessage> cms = db.getAllChatsFromId(chatId);
         Log.e("testDB", cms.toString());
         for (ChatMessage cm : cms) {
-            listThreadAdapter.add(new ChatMessage(cm.getChatId(), ""+R.drawable.cat_sporty, cm.getContent(), cm.getTime(), cm.getNickname()));
+            listThreadAdapter.add(new ChatMessage(cm.getChatId(), ""+R.drawable.profile_pictures, cm.getContent(), cm.getTime(), cm.getNickname()));
         }
        /*
         listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo juga", new Date(), "watashi"));
