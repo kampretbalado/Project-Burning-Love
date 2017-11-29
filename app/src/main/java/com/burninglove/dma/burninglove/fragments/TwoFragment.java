@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,22 +39,24 @@ public class TwoFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setContentView(R.layout.fragment_two);
-        List<ChatRoom> listChatRoom = new ArrayList<>();
-        ChatRoomAdapter listChatRoomAdapter = new ChatRoomAdapter(getContext(), listChatRoom);
-        ListView listViewThread = (ListView) getActivity().findViewById(R.id.chatrooms_container);
-        listViewThread.setAdapter(listChatRoomAdapter);
-
-        listChatRoomAdapter.add(new ChatRoom(1, true, "Heroine", "halo halo halo"));
-        listChatRoomAdapter.add(new ChatRoom(2, true, "Alter Ego", "bakikuk"));
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_two, container, false);
+
+        List<ChatRoom> listChatRoom = new ArrayList<>();
+        ChatRoomAdapter listChatRoomAdapter = new ChatRoomAdapter(getContext(), listChatRoom);
+        ListView listViewThread = (ListView) v.findViewById(R.id.chatrooms_container);
+        listViewThread.setAdapter(listChatRoomAdapter);
+
+        listChatRoomAdapter.add(new ChatRoom(1, true, "Heroine", "halo halo halo", ""+R.drawable.cat_sporty, new Date()));
+        listChatRoomAdapter.add(new ChatRoom(2, true, "Alter Ego", "bakikuk", ""+R.drawable.cat_sporty, new Date()));
+
+        return v;
     }
 
     @Override
@@ -63,16 +66,16 @@ public class TwoFragment extends Fragment{
 
         List<ChatRoom> rooms = new ArrayList<ChatRoom>();
 
-        frameLayoutChat = (FrameLayout) getView().findViewById(R.id.frameLayoutChatRoom);
-
-        frameLayoutChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ChatRoomActivity.class);
-                
-                startActivity(intent);
-            }
-        });
+//        frameLayoutChat = (FrameLayout) getView().findViewById(R.id.frameLayoutChatRoom);
+//
+//        frameLayoutChat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), ChatRoomActivity.class);
+//
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private class ChatRoomAdapter extends ArrayAdapter<ChatRoom> {
@@ -85,7 +88,7 @@ public class TwoFragment extends Fragment{
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            FrameLayout view = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.list_item_chatrooms, null);
+            FrameLayout view = (FrameLayout) LayoutInflater.from(getActivity()).inflate(R.layout.list_item_chatrooms, null);
             ChatRoom chatRoom = getItem(position);
 
             FrameLayout opponentView = (FrameLayout) view.findViewById(R.id.frameLayoutChatRoom);

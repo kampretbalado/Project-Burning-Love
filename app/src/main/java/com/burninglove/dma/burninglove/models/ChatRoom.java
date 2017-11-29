@@ -21,12 +21,13 @@ public class ChatRoom {
         this.latestChat = latestChat;
     }
 
-    public ChatRoom(int chatId, boolean isPrivateChat, String chatRoomName, String latestChat, String profilePictureURI) {
+    public ChatRoom(int chatId, boolean isPrivateChat, String chatRoomName, String latestChat, String profilePictureURI, Date time) {
         this.chatId = chatId;
         this.isPrivateChat = isPrivateChat;
         this.chatRoomName = chatRoomName;
         this.latestChat = latestChat;
         this.profilePictureURI = profilePictureURI;
+        this.time = time;
     }
 
     public int getChatId() {
