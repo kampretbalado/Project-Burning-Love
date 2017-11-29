@@ -7,19 +7,18 @@ import java.util.Date;
  */
 
 public class ChatMessage {
-
-
-
+    private int chatId;
     private String profilePictureURI;
     private String content;
     private Date time;
     private String nickname;
 
-    public ChatMessage(String profilePictureURI, String content, Date time, String nickname) {
+    public ChatMessage(int chatId, String profilePictureURI, String content, Date time, String nickname) {
         this.profilePictureURI = profilePictureURI;
         this.content = content;
         this.time = time;
         this.nickname = nickname;
+        this.chatId = chatId;
     }
 
     public String getContent() {
@@ -53,4 +52,13 @@ public class ChatMessage {
     public void setProfilePictureURI(String profilePictureURI) {
         this.profilePictureURI = profilePictureURI;
     }
+
+    public int getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(int chatId) {
+        this.chatId = chatId;
+    }
+
 }

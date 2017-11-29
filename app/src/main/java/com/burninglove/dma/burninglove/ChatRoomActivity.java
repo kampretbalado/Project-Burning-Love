@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,20 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.burninglove.dma.burninglove.helper.DatabaseHelper;
 import com.burninglove.dma.burninglove.models.ChatMessage;
 import com.burninglove.dma.burninglove.util.ImageUtility;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
+    DatabaseHelper db;
 
     private ThreadsAdapter listThreadAdapter;
     private ArrayList<ChatMessage> a;
@@ -37,21 +42,58 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-        setTitle("Friend A");
+        setTitle("kasel");
         List<ChatMessage> listChatMessage = new ArrayList<>();
-        String nicknameDummy = "Friend A";
+
+        String nicknameDummy = "kasel";
         listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         ListView listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
 
-        a = new ArrayList();
-        a.add(new ChatMessage(""+R.drawable.cat_sporty, "halo", new Date(), "Friend A"));
-        a.add(new ChatMessage(""+R.drawable.cat_sporty, "halo juga", new Date(), "Me"));
-        a.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi apa?", new Date(), "Friend A"));
-        a.add(new ChatMessage(""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
-        a.add(new ChatMessage(""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Friend A"));
+        int chatId = 2;
+        a = new ArrayList<ChatMessage>();
+
+        db = new DatabaseHelper(getApplicationContext());
+        List<ChatMessage> cms = db.getAllChatsFromId(chatId);
+
+        Collections.sort(cms, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                ChatMessage p1 = (ChatMessage) o1;
+                ChatMessage p2 = (ChatMessage) o2;
+                return p1.getTime().compareTo(p2.getTime());
+            }
+        });
+
+        Log.e("testDB", cms.toString());
+        for (ChatMessage cm : cms) {
+            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.cat_sporty, cm.getContent(), cm.getTime(), cm.getNickname()));
+//            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.profile_pictures, cm.getContent(), cm.getTime(), cm.getNickname()));
+        }
 
         handler.postDelayed(runnable, 1000);
+
+        /*
+        String nicknameDummy = "kasel";
+        ThreadsAdapter listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
+        ListView listViewThread = (ListView) findViewById(R.id.thread_container);
+        listViewThread.setAdapter(listThreadAdapter);
+
+        int chatId = 2;
+
+        db = new DatabaseHelper(getApplicationContext());
+        List<ChatMessage> cms = db.getAllChatsFromId(chatId);
+        Log.e("testDB", cms.toString());
+        for (ChatMessage cm : cms) {
+            listThreadAdapter.add(new ChatMessage(cm.getChatId(), ""+R.drawable.profile_pictures, cm.getContent(), cm.getTime(), cm.getNickname()));
+        }
+        */
+       /*
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "halo juga", new Date(), "watashi"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi apa?", new Date(), "demia"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "Me"));
+        listThreadAdapter.add(new ChatMessage(2, ""+R.drawable.cat_sporty, "wah asik bgt lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob lagi ngoding tekmob", new Date(), "demia"));
+        */
     }
 
     private Handler handler = new Handler();
@@ -63,7 +105,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 handler.removeCallbacks(runnable);
             else
                 listThreadAdapter.add(a.get(i++));
-            handler.postDelayed(this, 3000);
+            handler.postDelayed(this, 2500);
         }
     };
 
