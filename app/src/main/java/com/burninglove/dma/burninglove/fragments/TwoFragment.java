@@ -51,10 +51,10 @@ public class TwoFragment extends Fragment{
         ListView listViewThread = (ListView) v.findViewById(R.id.chatrooms_container);
         listViewThread.setAdapter(listChatRoomAdapter);
 
-//        listChatRoomAdapter.add(new ChatRoom(1, true, "Luna", "halo halo halo", ""+R.drawable.profile_pictures, new Date()));
-//        listChatRoomAdapter.add(new ChatRoom(2, false, "Group Olahraga(30)", "bakikuk", ""+R.drawable.group_profile, new Date()));
-        listChatRoomAdapter.add(new ChatRoom(1, true, "Luna", "halo halo halo", ""+R.drawable.cat_sporty, new Date()));
-        listChatRoomAdapter.add(new ChatRoom(2, false, "Group Olahraga(30)", "bakikuk", ""+R.drawable.cat_sporty, new Date()));
+        listChatRoomAdapter.add(new ChatRoom(1, true, "Luna", "halo halo halo", ""+R.drawable.profile_pictures, new Date()));
+        listChatRoomAdapter.add(new ChatRoom(2, false, "Group Olahraga(30)", "bakikuk", ""+R.drawable.group_profile, new Date()));
+//        listChatRoomAdapter.add(new ChatRoom(1, true, "Luna", "halo halo halo", ""+R.drawable.cat_sporty, new Date()));
+//        listChatRoomAdapter.add(new ChatRoom(2, false, "Group Olahraga(30)", "bakikuk", ""+R.drawable.cat_sporty, new Date()));
 
         return v;
     }

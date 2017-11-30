@@ -46,7 +46,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-        setTitle("kasel");
+        setTitle("Luna");
         List<ChatMessage> listChatMessage = new ArrayList<>();
 
         String nicknameDummy = "kasel";
@@ -71,8 +71,8 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         Log.e("testDB", cms.toString());
         for (ChatMessage cm : cms) {
-            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.cat_sporty, cm.getContent(), cm.getTime(), cm.getNickname()));
-//            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.profile_pictures, cm.getContent(), cm.getTime(), cm.getNickname()));
+//            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.cat_sporty, cm.getContent(), cm.getTime(), cm.getNickname()));
+            a.add(new ChatMessage(cm.getChatId(), ""+R.drawable.profile_pictures, cm.getContent(), cm.getTime(), cm.getNickname()));
         }
 
         handler.postDelayed(runnable, 1000);
@@ -138,7 +138,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             FrameLayout view = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.list_item_thread, null);
             ChatMessage chatMessage = getItem(position);
-            if(chatMessage.getNickname().equals(nickname)){
+            if(!chatMessage.getNickname().equals(nickname)){
                 RelativeLayout opponentView = (RelativeLayout) view.findViewById(R.id.chat_opponent);
                 opponentView.setVisibility(View.GONE);
 
