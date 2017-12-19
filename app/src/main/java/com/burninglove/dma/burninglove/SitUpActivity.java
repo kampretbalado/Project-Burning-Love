@@ -95,6 +95,7 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
     };
 
     protected void done() {
+        handler.removeCallbacks(runnable);
         Intent intent = new Intent(SitUpActivity.this, HasilActivity.class);
         intent.putExtra("type", "situp");
         intent.putExtra("counter", mCount);
@@ -142,10 +143,10 @@ public class SitUpActivity extends AppCompatActivity implements SensorEventListe
         }
 
         if (mCount == limit){
-            onPause();
+            //onPause();
             b_stop.setText("done");
             b_stop.setBackgroundColor(Color.GREEN);
-            handler.removeCallbacks(runnable);
+
         }
 
     }

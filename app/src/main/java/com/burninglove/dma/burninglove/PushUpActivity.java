@@ -88,6 +88,7 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
     };
 
     protected void done() {
+        handler.removeCallbacks(runnable);
         Intent intent = new Intent(PushUpActivity.this, HasilActivity.class);
         intent.putExtra("type", "pushup");
         intent.putExtra("counter", counter);
@@ -122,10 +123,10 @@ public class PushUpActivity extends AppCompatActivity implements SensorEventList
             }
 
             if (counter == limit) {
-                onPause();
+                //onPause();
                 b_stop.setText("done");
                 b_stop.setBackgroundColor(Color.GREEN);
-                handler.removeCallbacks(runnable);
+
             }
         }
     }

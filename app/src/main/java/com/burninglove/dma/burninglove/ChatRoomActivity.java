@@ -46,7 +46,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
-        setTitle("Luna");
+        setTitle("Demia");
         List<ChatMessage> listChatMessage = new ArrayList<>();
 
         String nicknameDummy = "demia";
