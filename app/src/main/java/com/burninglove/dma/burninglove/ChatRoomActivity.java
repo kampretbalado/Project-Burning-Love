@@ -49,7 +49,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         setTitle("Luna");
         List<ChatMessage> listChatMessage = new ArrayList<>();
 
-        String nicknameDummy = "kasel";
+        String nicknameDummy = "demia";
         listThreadAdapter = new ThreadsAdapter(this, listChatMessage, nicknameDummy);
         listViewThread = (ListView) findViewById(R.id.thread_container);
         listViewThread.setAdapter(listThreadAdapter);
